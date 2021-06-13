@@ -1,24 +1,30 @@
-import logo from './logo.svg';
+import React from "react";
+import { Switch, Route } from "react-router-dom";
 import './App.css';
+import Home from "./components/Home/Home";
+import NavBar from "./components/NavBar/NavBar";
+import HeroesContainer from "./components/HeroesContainer/HeroesContainer";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Carlos Montero React App
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <main className="app">
+      <NavBar />
+      <Switch>
+        <Route exact path="/">
+          <Home />
+        </Route>
+        <Route exact path="/heroes">
+          <HeroesContainer />
+        </Route>
+        <Route exact path="/heroes/:id">
+          {/*<PetProfile />*/}
+        </Route>
+        {/* keep the "*" path at the end */}
+        <Route path="*">
+          <h1>404 Not Found :c</h1>
+        </Route>
+      </Switch>
+    </main>
   );
 }
 
