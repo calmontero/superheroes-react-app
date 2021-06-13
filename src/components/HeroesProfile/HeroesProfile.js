@@ -19,15 +19,14 @@ function HeroesProfile() {
     
     return (
         <div className="card" >
-        <h2>{hero.name}</h2>
-        <img
-            src={hero.image}
-            alt={hero.name}
-            className="hero-avatar"
-        />
-        <div ><strong>Real Name:</strong> {hero.realname} <br/> <strong>Publisher:</strong> {hero.publisher} <br/> <strong>Alignment:</strong> {hero.alignment} </div>
-        
-    </div>
+            <h2>{hero.name}</h2>
+            <img
+                src={hero.image}
+                alt={hero.name}
+                className="hero-avatar"
+            />
+            <div ><strong>Real Name:</strong> {hero.realname} <br/> <strong>Publisher:</strong> {hero.publisher} <br/> <strong>Alignment:</strong> {hero.alignment} </div>
+        </div>
     );
 }
 

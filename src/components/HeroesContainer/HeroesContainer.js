@@ -12,13 +12,9 @@ function HeroesContainer() {
     const [showForm, setShowForm] = useState(false);
     const [hero, setHero] = useState([]);
     const [search, setSearch] = useState("");
-  
+    
     function handleClick() {
       setShowForm((showForm) => !showForm);
-    }
-  
-    function handleHide() {
-      setShowForm(false);
     }
   
     //Recover the data
@@ -50,8 +46,11 @@ function HeroesContainer() {
           <br />
           <br />
           <ButtonGroup disableElevation variant="outlined" color="secondary">
-            <Button onClick={handleClick} >More</Button>
-            <Button onClick={handleHide} >Less</Button>
+          {showForm ? (
+                <Button onClick={handleClick} >Less</Button>
+                ) : (
+                <Button onClick={handleClick} >More</Button>
+                )}
           </ButtonGroup>
           <br />
             { hero.displayHeroes === 0
