@@ -1,3 +1,40 @@
+# Superheroes Page react structure
+
+App
+   - NavBar
+     - Home
+     - HeroesContainer
+       - HeroesForm (props)
+       - HeroesSearch (props)
+       - HeroesCard (props)
+         - HeroesProfile
+
+### Hooks used
+- usestate
+- useeffect
+
+### react-router-dom - API Hooks
+- useparams
+- <Link>
+- <NavLink>
+- <Route>
+- <Switch>
+
+### styling
+@material-ui
+
+### API used
+https://superheroapi.com/?ref=apilist.fun
+
+### Page functionality:
+
+Users can see a list of superheroes.
+Users can search for a superhero by name.
+Users can mark a superhero as their favorite.
+Users can add a new superhero.
+Users can delete a superhero.
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
