@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import Input from '@material-ui/core/Input';
 import Button from '@material-ui/core/Button';
 
+const BASE_URL = 'https://json-server-pj-backend.herokuapp.com/heroes';
+
 function HeroesForm({ onAddHero }) {
   const[form, setForm] = useState({
     name: '',
@@ -14,7 +16,7 @@ function HeroesForm({ onAddHero }) {
 
 function handleSubmit(e) {
     e.preventDefault();
-    fetch("https://json-server-pj-backend.herokuapp.com/heroes", {
+    fetch(BASE_URL, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -24,7 +26,6 @@ function handleSubmit(e) {
         realname: form.realname,
         publisher: form.publisher,
         alignment: form.alignment,
-        gender: form.gender,
         image: form.image,
         isFavorite: false,
       }),

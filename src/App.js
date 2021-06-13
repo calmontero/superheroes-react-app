@@ -4,6 +4,8 @@ import './App.css';
 import Home from "./components/Home/Home";
 import NavBar from "./components/NavBar/NavBar";
 import HeroesContainer from "./components/HeroesContainer/HeroesContainer";
+import HeroesProfile from "./components/HeroesProfile/HeroesProfile";
+
 
 function App() {
   return (
@@ -17,7 +19,7 @@ function App() {
           <HeroesContainer />
         </Route>
         <Route exact path="/heroes/:id">
-          {/*<PetProfile />*/}
+          <HeroesProfile />
         </Route>
         {/* keep the "*" path at the end */}
         <Route path="*">
