@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import "./HeroesCard.css";
 import { Link } from 'react-router-dom';
 
-function HeroesCard({ hero, onDeleteHero }) {
-  const { id, name, publisher, isFavorite } = hero;
+
+function HeroesCard({ heroes, onDeleteHero }) {
+  const { id, name, publisher, isFavorite } = heroes;
   const [isFav, setFav] = useState(isFavorite);
 
   function handleDeleteClick(e) {

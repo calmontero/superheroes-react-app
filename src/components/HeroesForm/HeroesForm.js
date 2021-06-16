@@ -10,7 +10,6 @@ function HeroesForm({ onAddHero }) {
     realname: '',
     publisher: '',
     alignment: '',
-    gender: '',
     image: ''
   });
 

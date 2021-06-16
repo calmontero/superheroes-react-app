@@ -6,12 +6,11 @@ import './HeroesContainer.css';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 import Button from '@material-ui/core/Button';
 
-const BASE_URL = 'https://json-server-pj-backend.herokuapp.com/heroes';
-
 function HeroesContainer() {
     const [showForm, setShowForm] = useState(false);
-    const [hero, setHero] = useState([]);
+    const [heroes, setHeroes] = useState([]);
     const [search, setSearch] = useState("");
+    const [sortType, setSortType] = useState(""); 
     
     function handleClick() {
       setShowForm((showForm) => !showForm);
@@ -19,22 +18,27 @@ function HeroesContainer() {
   
     //Recover the data
     useEffect(() => (
-      fetch(BASE_URL)
+      fetch('https://json-server-pj-backend.herokuapp.com/heroes')
         .then((response) => response.json())
-        .then((heroData) => setHero(heroData))
+        .then((heroData) => setHeroes(heroData))
     ),[]);
   
     function handleAddHero(newHero) {
-      const updatedHeroes = [...hero, newHero];
-      setHero(updatedHeroes);
+      const updatedHeroes = [...heroes, newHero];
+      setHeroes(updatedHeroes);
     }
   
     function handleDeleteHero(id) {
-      const updatedHeroes = hero.filter((heroList) => heroList.id !== id);
-      setHero(updatedHeroes);
+      const updatedHeroes = heroes.filter((heroList) => heroList.id !== id);
+      setHeroes(updatedHeroes);
     } 
-  
-    const displayHeroes = hero.filter((heroesList) => {
+    // Sort the Heroes List
+    useEffect(() => {
+      const sorted = [...heroes].sort((a, b) => a.name.localeCompare(b.name));
+      setHeroes(sorted);
+    }, [sortType])
+
+    const displayHeroes = heroes.filter((heroesList) => {
       return heroesList.name.toLowerCase().includes(search.toLowerCase());
     });
 
@@ -46,6 +50,10 @@ function HeroesContainer() {
           <br />
           <br />
           <ButtonGroup disableElevation variant="outlined" color="secondary">
+            <Button onClick={() => setSortType("name")} >Sort</Button>
+          </ButtonGroup>
+
+          <ButtonGroup disableElevation variant="outlined" color="secondary">
           {showForm ? (
                 <Button onClick={handleClick} >Less</Button>
                 ) : (
@@ -53,12 +61,12 @@ function HeroesContainer() {
                 )}
           </ButtonGroup>
           <br />
-            { hero.displayHeroes === 0
+            { heroes.displayHeroes === 0
               ? <h1>Loading...</h1>
-              :displayHeroes.map(hero => {
+              :displayHeroes.map(heroes => {
                 return < HeroesCard 
-                          key={hero.id} 
-                          hero={hero}
+                          key={heroes.id} 
+                          heroes={heroes}
                           onDeleteHero={handleDeleteHero}
                           />
               })
